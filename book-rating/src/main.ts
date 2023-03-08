@@ -11,10 +11,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 class Test {
 
-  zahl: number;
-
-  constructor(zahl: number) {
-    // this.zahl = zahl;
+  constructor(public zahl: number = 0) {
     console.error('Hallo Welt!! 😀', this.zahl)
   }
 
