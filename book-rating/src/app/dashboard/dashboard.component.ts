@@ -8,9 +8,20 @@ import { Book } from '../shared/book';
 })
 export class DashboardComponent {
 
-  books: Book[];
-
-  ngOnInit() {
-    this.books = [];
-  }
+  books: Book[] = [{
+    isbn: '000',
+    title: 'Angular',
+    description: 'Tolles Buch',
+    rating: 5
+  }, {
+    isbn: '111',
+    title: 'AngularJS',
+    description: 'Altes Buch',
+    rating: 3
+  }, {
+    isbn: '222',
+    title: 'jQuery',
+    description: 'zu alt',
+    rating: 1
+  }];
 }
