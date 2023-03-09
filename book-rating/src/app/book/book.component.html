@@ -10,8 +10,16 @@
     </div>
     <p>{{ book.description }}</p>
 
-    <!-- ist blau! 😱 -->
-    <button class="btn btn-primary">Klick mich</button>
+    <!-- ACHTUNG: Schlechte Praxis
+
+      1. Logik versteckt, Logik im HTML
+      2. Speration of Concerns missachtet
+      3. keine Immutability. Objekt wird mutiert
+
+    -->
+
+    <button class="btn btn-primary me-2" (click)="book.rating = book.rating - 1">-1</button>
+    <button class="btn btn-primary"      (click)="book.rating = book.rating + 1">+1</button>
   </div>
 </div>
 
