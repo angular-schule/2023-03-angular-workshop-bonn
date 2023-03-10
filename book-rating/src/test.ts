@@ -6,6 +6,7 @@ export class Test {
     console.error('Hallo Welt!! 😀', this.zahl)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public blubb() { }
 }
 
