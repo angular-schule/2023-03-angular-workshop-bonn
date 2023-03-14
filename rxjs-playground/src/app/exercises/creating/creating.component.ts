@@ -30,10 +30,28 @@ export class CreatingComponent {
     }
 
     // Observable
-    const subscription = of('😃', '🤩', '😇').subscribe(observer);
+    // const observable = of('😃', '🤩', '😇'); // Subscriber
+    const observable = new Observable<string>(subscriber => {
+
+      subscriber.next('😃');
+
+      const x = setTimeout(() => subscriber.next('🥳'), 1000);
+      const z = setTimeout(() => { subscriber.next('😄'); this.log('🧟‍♂️🧟🧟‍♂️ Zombie code!!!') }, 2000);
+      const y = setTimeout(() => subscriber.error('BOHHH!!'), 3000);
+
+      return () => {
+        this.log('Es wurde unsubscribed, wir sollten die Zombies killen!');
+        clearTimeout(x);
+        clearTimeout(z);
+        clearTimeout(y);
+      }
+    });
+
+
+    const subscription = observable.subscribe(observer);
 
     // Subscription
-    subscription.unsubscribe();
+    setTimeout(() => subscription.unsubscribe(), 1500);
 
 
     /******************************/
