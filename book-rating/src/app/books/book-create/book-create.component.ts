@@ -39,6 +39,11 @@ export class BookCreateComponent {
       rating: 1
     };
 
+    // if (this.bookForm.invalid) {
+    //   this.bookForm.markAllAsTouched();
+    //   return;
+    // }
+
     this.create.emit(newBook);
 
     this.bookForm.reset();
