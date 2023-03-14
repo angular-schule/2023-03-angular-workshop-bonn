@@ -22,7 +22,13 @@ export class CreatingComponent {
 
     /******************************/
 
-    
+    of('😃', '🤩', '😇').subscribe(
+      e => this.log(e),
+      error => this.log('FEHLER' + error),
+      () => this.log('COMPLETE')
+    )
+
+
     /******************************/
   }
 
