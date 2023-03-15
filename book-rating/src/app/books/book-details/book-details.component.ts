@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { concatMap, map, mergeMap, Observable, switchMap } from 'rxjs';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
 
@@ -15,23 +15,13 @@ export class BookDetailsComponent {
 
   book$ = inject(ActivatedRoute).paramMap.pipe(
     map(paramMap => paramMap.get('isbn') || ''),
-    map(isbn => this.bs.getSingleBook(isbn))
+    switchMap(isbn => this.bs.getSingleBook(isbn))
   )
-
-  book?: Book;
 
   // Option A, damit es mit useDefineForClassFields funktioniert
   // $book$: Observable<any>;
   // constructor(route: ActivatedRoute) {
   //   this.$book$ = route.paramMap
   // }
-
-  constructor(private route: ActivatedRoute) {
-
-    route.paramMap.pipe(
-      map(paramMap => paramMap.get('isbn') || ''),
-      map(isbn => this.bs.getSingleBook(isbn))
-    ).subscribe(book$ => book$.subscribe(book => this.book = book))
-  }
 
 }
