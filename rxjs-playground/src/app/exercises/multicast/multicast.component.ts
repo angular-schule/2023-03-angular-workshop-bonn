@@ -25,7 +25,7 @@ export class MulticastComponent implements OnDestroy {
     // 2. geteilt mit share (hot) --> multicast
     this.measureValues$ = this.mvs.getValues().pipe(
       // share() // -- Subject
-      shareReplay(1) // --> ReplaySubject
+      shareReplay({ refCount: true, bufferSize: 1 }) // --> ReplaySubject
     )
 
     /**************!!**************/
