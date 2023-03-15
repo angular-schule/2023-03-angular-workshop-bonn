@@ -18,13 +18,5 @@ export class BookDetailsComponent {
   book$ = inject(ActivatedRoute).paramMap.pipe(
     map(paramMap => paramMap.get('isbn') || ''),
     switchMap(isbn => this.bs.getSingleBook(isbn)),
-    shareReplay(1)
   )
-
-  // Option A, damit es mit useDefineForClassFields funktioniert
-  // $book$: Observable<any>;
-  // constructor(route: ActivatedRoute) {
-  //   this.$book$ = route.paramMap
-  // }
-
 }

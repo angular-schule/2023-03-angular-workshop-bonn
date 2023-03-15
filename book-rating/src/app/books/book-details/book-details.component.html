@@ -1,10 +1,13 @@
-<h1>{{ (book$ | async)?.title }} – {{ (book$ | async)?.isbn }}</h1>
+<div *ngIf="book$ | async as book">
 
+  <h1>{{ book.title }} – {{ book.isbn }}</h1>
 
-<p *ngIf="showDetails">
-  Details:
-  {{ (book$ | async)?.description }}
-</p>
+  <p *ngIf="showDetails">
+    Details:
+    {{ book.description }}
+  </p>
+
+</div>
 
 <button (click)="showDetails = !showDetails">Toggle Details</button>
 
